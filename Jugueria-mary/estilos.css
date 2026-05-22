@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    min-height: 100vh;
+    padding: 40px;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header{
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.header h1{
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.header p{
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.card-formulario,
+.card-tabla,
+.card-finanzas{
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+}
+
+.card-formulario h2,
+.card-tabla h2,
+.card-finanzas h2{
+    margin-bottom: 20px;
+    color: #ff5e62;
+}
+
+.formulario{
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+input{
+    flex: 1;
+    min-width: 200px;
+    padding: 14px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    outline: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+input:focus{
+    border-color: #ff5e62;
+}
+
+button{
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+button:hover{
+    transform: scale(1.05);
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+thead{
+    background: #ff5e62;
+    color: white;
+}
+
+th{
+    padding: 15px;
+    font-weight: 500;
+}
+
+td{
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+tr:hover{
+    background: #fff5f5;
+}
+
+.card-finanzas{
+    text-align: center;
+}
+
+.monto{
+    font-size: 40px;
+    font-weight: bold;
+    color: #27ae60;
+    margin-top: 10px;
+}
+
+@media(max-width: 768px){
+
+    .formulario{
+        flex-direction: column;
+    }
+
+    button{
+        width: 100%;
+    }
+
+    .header h1{
+        font-size: 35px;
+    }
+
+}

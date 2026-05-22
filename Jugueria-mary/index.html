@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juguería Mary</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <div class="header">
+            <h1>Juguería Mary</h1>
+            <p>Gestión Integral de Inventarios y Control Financiero</p>
+        </div>
+
+        <div class="card-formulario">
+
+            <h2>Registrar Producto</h2>
+
+            <div class="formulario">
+
+                <input type="text" id="nombre" placeholder="Nombre del producto">
+
+                <input type="number" id="cantidad" placeholder="Cantidad">
+
+                <input type="number" id="precio" placeholder="Precio">
+
+                <button onclick="agregarProducto()">
+                    Agregar Producto
+                </button>
+
+            </div>
+        </div>
+
+        <div class="card-tabla">
+
+            <h2>Inventario Actual</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Total</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaProductos">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="card-finanzas">
+
+            <h2>Ingresos Totales</h2>
+
+            <div class="monto">
+                S/ <span id="ingresos">0.00</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
