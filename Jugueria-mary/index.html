@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,68 +9,149 @@
     <link rel="stylesheet" href="estilos.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
-    <div class="contenedor">
+    <div class="dashboard">
 
-        <div class="header">
-            <h1>Juguería Mary</h1>
-            <p>Gestión Integral de Inventarios y Control Financiero</p>
+        <!-- SIDEBAR -->
+
+        <div class="sidebar">
+
+            <h2>Mary</h2>
+
+            <ul>
+
+                <li>
+                    <i class="fa-solid fa-house"></i>
+                    Inicio
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-box"></i>
+                    Inventario
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    Finanzas
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-chart-line"></i>
+                    Reportes
+                </li>
+
+            </ul>
+
         </div>
 
-        <div class="card-formulario">
+        <!-- CONTENIDO -->
 
-            <h2>Registrar Producto</h2>
+        <div class="contenido">
 
-            <div class="formulario">
+            <div class="header">
 
-                <input type="text" id="nombre" placeholder="Nombre del producto">
+                <h1>Juguería Mary</h1>
 
-                <input type="number" id="cantidad" placeholder="Cantidad">
-
-                <input type="number" id="precio" placeholder="Precio">
-
-                <button onclick="agregarProducto()">
-                    Agregar Producto
-                </button>
+                <p>Sistema de Gestión Integral</p>
 
             </div>
-        </div>
 
-        <div class="card-tabla">
+            <!-- TARJETAS -->
 
-            <h2>Inventario Actual</h2>
+            <div class="cards">
 
-            <table>
+                <div class="card">
+                    <i class="fa-solid fa-box"></i>
+                    <h3>Productos</h3>
+                    <p id="cantidadProductos">0</p>
+                </div>
 
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Cantidad</th>
-                        <th>Precio</th>
-                        <th>Total</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
+                <div class="card">
+                    <i class="fa-solid fa-money-bill"></i>
+                    <h3>Ingresos</h3>
+                    <p>S/ <span id="ingresos">0.00</span></p>
+                </div>
 
-                <tbody id="tablaProductos">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-        <div class="card-finanzas">
-
-            <h2>Ingresos Totales</h2>
-
-            <div class="monto">
-                S/ <span id="ingresos">0.00</span>
             </div>
+
+            <!-- BUSCADOR -->
+
+            <div class="buscador">
+
+                <input type="text" placeholder="Buscar producto...">
+
+            </div>
+
+            <!-- FORMULARIO -->
+
+            <div class="card-formulario">
+
+                <h2>Registrar Producto</h2>
+
+                <div class="formulario">
+
+                    <input type="text" id="nombre" placeholder="Nombre del producto">
+
+                    <input type="number" id="cantidad" placeholder="Cantidad">
+
+                    <input type="number" id="precio" placeholder="Precio">
+
+                    <button onclick="agregarProducto()">
+
+                        Agregar Producto
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- TABLA -->
+
+            <div class="card-tabla">
+
+                <h2>Inventario</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Total</th>
+                            <th>Acción</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tablaProductos">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- FOOTER -->
+
+            <footer>
+
+                Sistema desarrollado para la Juguería Mary © 2026
+
+            </footer>
 
         </div>
 
@@ -78,4 +160,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>

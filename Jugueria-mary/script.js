@@ -55,6 +55,10 @@ function mostrarProductos(){
 
     document.getElementById("ingresos").textContent =
         ingresosTotales.toFixed(2);
+
+    document.getElementById("cantidadProductos").textContent =
+        productos.length;
+
 }
 
 function eliminarProducto(index){
