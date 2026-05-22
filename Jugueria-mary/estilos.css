@@ -13,8 +13,6 @@ body{
     display: flex;
 }
 
-/* SIDEBAR */
-
 .sidebar{
     width: 250px;
     height: 100vh;
@@ -50,8 +48,6 @@ body{
     margin-right: 10px;
 }
 
-/* CONTENIDO */
-
 .contenido{
     margin-left: 250px;
     width: 100%;
@@ -70,8 +66,6 @@ body{
 .header p{
     color: gray;
 }
-
-/* TARJETAS */
 
 .cards{
     display: flex;
@@ -107,8 +101,6 @@ body{
     font-weight: bold;
 }
 
-/* BUSCADOR */
-
 .buscador{
     margin-bottom: 20px;
 }
@@ -121,8 +113,6 @@ body{
     outline: none;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
 }
-
-/* FORMULARIO */
 
 .card-formulario,
 .card-tabla{
@@ -167,8 +157,6 @@ button:hover{
     transform: scale(1.05);
 }
 
-/* TABLA */
-
 table{
     width: 100%;
     border-collapse: collapse;
@@ -192,10 +180,57 @@ tbody tr:hover{
     background: #fff5f5;
 }
 
-/* FOOTER */
-
 footer{
     text-align: center;
     color: gray;
     margin-top: 30px;
+}
+
+.sidebar a{
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.activo{
+    background: rgba(255,255,255,0.2);
+}
+
+/* SELECT */
+
+select{
+    flex: 1;
+    min-width: 180px;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    outline: none;
+}
+
+
+.disponible{
+    background: #d4edda;
+    color: #155724;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.bajo{
+    background: #fff3cd;
+    color: #856404;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.agotado{
+    background: #f8d7da;
+    color: #721c24;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
 }

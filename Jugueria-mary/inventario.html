@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inventario | Juguería Mary</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="estilos.css">
+
+    <!-- Fuente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Iconos -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+
+        <div class="sidebar">
+
+            <h2>Mary</h2>
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fa-solid fa-house"></i>
+                        Inicio
+                    </a>
+                </li>
+
+                <li class="activo">
+                    <a href="inventario.html">
+                        <i class="fa-solid fa-box"></i>
+                        Inventario
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                        Finanzas
+                    </a>
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-chart-line"></i>
+                    Reportes
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- CONTENIDO -->
+
+        <div class="contenido">
+
+            <!-- HEADER -->
+
+            <div class="header">
+
+                <h1>Control de Inventario</h1>
+
+                <p>Gestión de productos de la Juguería Mary</p>
+
+            </div>
+
+            <!-- TARJETAS -->
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    <h3>Total Productos</h3>
+
+                    <p id="totalProductos">0</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    <h3>Stock Bajo</h3>
+
+                    <p id="stockBajo">0</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-circle-xmark"></i>
+
+                    <h3>Agotados</h3>
+
+                    <p id="agotados">0</p>
+
+                </div>
+
+            </div>
+
+            <!-- BUSCADOR -->
+
+            <div class="buscador">
+
+                <input type="text"
+                    id="buscar"
+                    placeholder="Buscar producto..."
+                    onkeyup="buscarProducto()">
+
+            </div>
+
+            <!-- FORMULARIO -->
+
+            <div class="card-formulario">
+
+                <h2>Registrar Producto</h2>
+
+                <div class="formulario">
+
+                    <input type="text"
+                        id="nombre"
+                        placeholder="Nombre del producto">
+
+                    <select id="categoria">
+
+                        <option value="">Categoría</option>
+
+                        <option>Jugos</option>
+
+                        <option>Batidos</option>
+
+                        <option>Postres</option>
+
+                        <option>Frutas</option>
+
+                    </select>
+
+                    <input type="number"
+                        id="cantidad"
+                        placeholder="Cantidad">
+
+                    <input type="number"
+                        id="precio"
+                        placeholder="Precio">
+
+                    <button onclick="agregarProducto()">
+
+                        Agregar Producto
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- TABLA -->
+
+            <div class="card-tabla">
+
+                <h2>Productos Registrados</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Producto</th>
+                            <th>Categoría</th>
+                            <th>Stock</th>
+                            <th>Precio</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tablaProductos">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- FOOTER -->
+
+            <footer>
+
+                Sistema de Inventario - Juguería Mary © 2026
+
+            </footer>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let productos = [];
+
+        function agregarProducto() {
+
+            let nombre =
+                document.getElementById("nombre").value;
+
+            let categoria =
+                document.getElementById("categoria").value;
+
+            let cantidad =
+                parseInt(document.getElementById("cantidad").value);
+
+            let precio =
+                parseFloat(document.getElementById("precio").value);
+
+            if (
+                nombre === "" ||
+                categoria === "" ||
+                isNaN(cantidad) ||
+                isNaN(precio)
+            ) {
+
+                alert("Complete todos los campos");
+
+                return;
+            }
+
+            let estado = "";
+
+            if (cantidad === 0) {
+
+                estado = "Agotado";
+
+            } else if (cantidad <= 5) {
+
+                estado = "Stock Bajo";
+
+            } else {
+
+                estado = "Disponible";
+            }
+
+            let producto = {
+
+                nombre,
+                categoria,
+                cantidad,
+                precio,
+                estado
+
+            };
+
+            productos.push(producto);
+
+            mostrarProductos();
+
+            limpiarCampos();
+        }
+
+        function mostrarProductos() {
+
+            let tabla =
+                document.getElementById("tablaProductos");
+
+            tabla.innerHTML = "";
+
+            let bajo = 0;
+            let agotados = 0;
+
+            productos.forEach((producto, index) => {
+
+                if (producto.estado === "Stock Bajo") {
+
+                    bajo++;
+
+                }
+
+                if (producto.estado === "Agotado") {
+
+                    agotados++;
+                }
+
+                let claseEstado = "";
+
+                if (producto.estado === "Disponible") {
+
+                    claseEstado = "disponible";
+
+                } else if (producto.estado === "Stock Bajo") {
+
+                    claseEstado = "bajo";
+
+                } else {
+
+                    claseEstado = "agotado";
+                }
+
+                tabla.innerHTML += `
+
+                <tr>
+
+                    <td>${producto.nombre}</td>
+
+                    <td>${producto.categoria}</td>
+
+                    <td>${producto.cantidad}</td>
+
+                    <td>S/ ${producto.precio}</td>
+
+                    <td>
+
+                        <span class="${claseEstado}">
+                            ${producto.estado}
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button onclick="eliminarProducto(${index})">
+
+                            Eliminar
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                `;
+            });
+
+            document.getElementById("totalProductos")
+                .textContent = productos.length;
+
+            document.getElementById("stockBajo")
+                .textContent = bajo;
+
+            document.getElementById("agotados")
+                .textContent = agotados;
+        }
+
+        function eliminarProducto(index) {
+
+            let confirmar =
+                confirm("¿Desea eliminar este producto?");
+
+            if (confirmar) {
+
+                productos.splice(index, 1);
+
+                mostrarProductos();
+            }
+        }
+
+        function limpiarCampos() {
+
+            document.getElementById("nombre").value = "";
+
+            document.getElementById("categoria").value = "";
+
+            document.getElementById("cantidad").value = "";
+
+            document.getElementById("precio").value = "";
+        }
+
+        function buscarProducto() {
+
+            let input =
+                document.getElementById("buscar")
+                    .value
+                    .toLowerCase();
+
+            let filas =
+                document.querySelectorAll("#tablaProductos tr");
+
+            filas.forEach(fila => {
+
+                let producto =
+                    fila.children[0]
+                        .textContent
+                        .toLowerCase();
+
+                let categoria =
+                    fila.children[1]
+                        .textContent
+                        .toLowerCase();
+
+                if (
+                    producto.includes(input) ||
+                    categoria.includes(input)
+                ) {
+
+                    fila.style.display = "";
+
+                } else {
+
+                    fila.style.display = "none";
+                }
+
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
